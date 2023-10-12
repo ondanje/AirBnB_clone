@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from datetime import datetime
 import uuid
 
@@ -15,10 +16,11 @@ class BaseModel:
                     value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                 if key == "id":
                     try:
-                        value = str(value)  # Convert to string
-                        value = uuid.UUID(value)  # Try to convert to UUID
+                        """convert to a string"""
+                        value = str(value)
+                        value = uuid.UUID(value)
                     except ValueError:
-                        value = uuid.UUID(hex=value)  # Handle non-hexadecimal UUID
+                        value = uuid.UUID(hex=value)
                 setattr(self, key, value)
         else:
             self.created_at = datetime.now()
@@ -41,29 +43,3 @@ class BaseModel:
                 value = value.isoformat()
             dictionary[key] = value
         return dictionary
-
-
-if __name__ == "__main__":
-    my_model = BaseModel()
-    my_model.name = "My_First_Model"
-    my_model.my_number = 89
-    print(my_model.id)
-    print(my_model)
-    print(type(my_model.created_at))
-    print("--")
-    my_model_json = my_model.to_dict()
-    print(my_model_json)
-    print("JSON of my_model:")
-    for key in my_model_json.keys():
-        print(
-            "\t{}: ({}) - {}".format(key, type(my_model_json[key]), my_model_json[key])
-        )
-
-    print("--")
-    my_new_model = BaseModel(**my_model_json)
-    print(my_new_model.id)
-    print(my_new_model)
-    print(type(my_new_model.created_at))
-
-    print("--")
-    print(my_model is my_new_model)
