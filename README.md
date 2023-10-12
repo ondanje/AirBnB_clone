@@ -85,6 +85,6 @@ Feel free to contribute to this project by submitting issues, feature requests, 
 
 ## Credits
 
-This project is developed as part of Cyril Ondanje & Kidiavayi Omeno's work at ALX SOFTWARE ENGINEERING course. We extend our gratitude to the open-source community for their contributions and support.
+This project is developed as a team project by Cyril Ondanje & Kidiavayi Omeno as part the coursework work at ALX SOFTWARE ENGINEERING bootcamp. We extend our gratitude to the open-source community for their contributions and support.
 
 Happy coding!
