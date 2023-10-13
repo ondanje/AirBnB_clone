@@ -1,13 +1,14 @@
 #!/usr/bin/python3
 from datetime import datetime
 import uuid
+from models import storage
 
 
 class BaseModel:
     """Initializes the base model"""
 
     def __init__(self, *args, **kwargs):
-        self.updated_at = datetime.now()
+
         if kwargs:
             for key, value in kwargs.items():
                 if key == "__class__":
@@ -22,9 +23,11 @@ class BaseModel:
                     except ValueError:
                         value = uuid.UUID(hex=value)
                 setattr(self, key, value)
-        else:
-            self.created_at = datetime.now()
-            self.id = uuid.uuid4()
+
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
+        self.id = str(uuid.uuid4())
+        storage.new(self)
 
     def __str__(self):
         """Returns a string representation of the object"""
@@ -33,6 +36,7 @@ class BaseModel:
     def save(self):
         """Updates the updated_at attribute to saved time"""
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         """Returns a dictionary of all keys and values"""
