@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import json
-
+import os
 
 
 class FileStorage:
@@ -26,15 +26,11 @@ class FileStorage:
             json.dump(serialized_data, file)
 
     def reload(self):
-        try:
-            with open(FileStorage.__file_path, 'r', encoding='utf-8') as file:
+        """
+        deserializes the JSON file to __objects
+        """
+        if os.path.exists(FileStorage.__file_path):
+            with open(self.__file_path, "r", encoding="utf-8") as file:
                 data = json.load(file)
-
-                for key, value in data.items():
-                    """splits the key into class name & obj id"""
-                    class_name, obj_id = key.split(".")
-                    obj_dict = eval(class_name)(**value)
-                    FileStorage.__objects[key] = obj_dict
-
-        except FileNotFoundError:
-            pass
+                for values in data.values():
+                    cls_name = values["__class__"]
