@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import cmd
 from models.base_model import BaseModel
+from models import storage
 
 
 class HBNBCommand(cmd.Cmd):
@@ -45,7 +46,10 @@ class HBNBCommand(cmd.Cmd):
         elif len(command) == 1:
             print("** instance id is missing **")
         else:
-            print(f"{command[0].id}")
+            key_instance = "{}.{}".format(command[0], command[1])
+            if key_instance in storage.all():
+                print(storage.all()[key_instance])
+                storage.save()
 
 
 if __name__ == "__main__":
