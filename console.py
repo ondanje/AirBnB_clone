@@ -1,10 +1,15 @@
 #!/usr/bin/python3
 import cmd
+from models.base_model import BaseModel
 
 
 class HBNBCommand(cmd.Cmd):
     """Console.py command interpreter"""
+
     prompt = "(hbnb) "
+    dictionary = {
+        "BaseModel": BaseModel,
+    }
 
     def do_EOF(self, line):
         """Exit the program (ctrl +D)"""
@@ -17,6 +22,31 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         pass
 
+    def do_create(self, line):
+        command = line.split()
+        if not command:
+            print(f"** class name is mising **")
+            return
+        else:
+            if command[0] not in self.dictionary.keys():
+                print(f"** class does not exist **")
+                return
+            new_inst = self.dictionary[command[0]]()
+            new_inst.save()
+            print(new_inst.id)
 
-if __name__ == '__main__':
+    def do_show(self, line):
+        command = line.split()
+
+        if not command:
+            print("** class name is missing **")
+        elif command[0] not in self.dictionary.keys():
+            print("** class doesn't exist **")
+        elif len(command) == 1:
+            print("** instance id is missing **")
+        else:
+            print(f"{command[0].id}")
+
+
+if __name__ == "__main__":
     HBNBCommand().cmdloop()
