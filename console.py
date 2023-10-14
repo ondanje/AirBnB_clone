@@ -40,7 +40,7 @@ class HBNBCommand(cmd.Cmd):
         command = line.split()
 
         if not command:
-            print("** class name is missing **")
+            print("** class name missing **")
         elif command[0] not in self.dictionary.keys():
             print("** class doesn't exist **")
         elif len(command) == 1:
@@ -49,6 +49,22 @@ class HBNBCommand(cmd.Cmd):
             key_instance = "{}.{}".format(command[0], command[1])
             if key_instance in storage.all():
                 print(storage.all()[key_instance])
+                storage.save()
+
+    def do_destroy(self, line):
+        command = line.split()
+
+        if not command:
+            print("** class name missing **")
+        elif command[0] not in self.dictionary.keys():
+            print("** class doesn't exist **")
+        elif len(command) == 1:
+            print("** instance id is missing **")
+        else:
+            key_instance = "{}.{}".format(command[0], command[1])
+            inst_storage = storage.all()
+            if key_instance in inst_storage:
+                del inst_storage[key_instance]
                 storage.save()
 
 
