@@ -43,19 +43,23 @@ class TestFileStorageDocs(unittest.TestCase):
             file_storage.__doc__, None, "file_storage.py requires docstring"
         )
         self.assertTrue(
-            len(file_storage.__doc__) >= 1, "file_storage.py requires docstring"
+            len(file_storage.__doc__) >= 1,
+            "file_storage.py requires docstring"
         )
 
     def test_file_storage_class_docstring(self):
         """Test for the FileStorage  docstring"""
-        self.assertIsNot(FileStorage.__doc__, None, "State class requires docstring")
-        self.assertTrue(len(FileStorage.__doc__) >= 1, "State class requires docstring")
+        self.assertIsNot(FileStorage.__doc__, None,
+                         "State class requires docstring")
+        self.assertTrue(len(FileStorage.__doc__) >= 1,
+                        "State class requires docstring")
 
     def test_docstrings(self):
         """Docstring presence test"""
         for func in self.fs_f:
             self.assertIsNot(
-                func[1].__doc__, None, "{:s} method requires docstring".format(func[0])
+                func[1].__doc__, None,
+                "{:s} method requires docstring".format(func[0])
             )
             self.assertTrue(
                 len(func[1].__doc__) >= 1,
@@ -85,7 +89,8 @@ class TestFileStorage(unittest.TestCase):
                 instance_key = instance.__class__.__name__ + "." + instance.id
                 storage.new(instance)
                 test_dictionary[instance_key] = instance
-                self.assertEqual(test_dictionary, storage._FileStorage__objects)
+                self.assertEqual(test_dictionary,
+                                 storage._FileStorage__objects)
         FileStorage._FileStorage__objects = save_str
 
     def test_save(self):

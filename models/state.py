@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+class State handle state info
+"""
 from models.base_model import BaseModel
 
 

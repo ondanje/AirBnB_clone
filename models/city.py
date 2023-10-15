@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+class City to handlle city info
+"""
 from models.base_model import BaseModel
 
 

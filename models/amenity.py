@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+class Amenity to handle amenity info
+"""
 from models.base_model import BaseModel
 
 

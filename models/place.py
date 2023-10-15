@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+class Place to handle place info
+"""
 from models.base_model import BaseModel
 
 
