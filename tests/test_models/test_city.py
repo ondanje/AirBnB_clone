@@ -1,9 +1,11 @@
 # /usr/bin/python3
 """Contains Test cases for the test_city file"""
 from datetime import datetime
+from models import city
 from models.base_model import BaseModel
-from models.city import City
 import unittest
+
+City = city.City
 
 
 class TestCity(unittest.TestCase):
@@ -12,7 +14,7 @@ class TestCity(unittest.TestCase):
     def test_subclass(self):
         """Test for subclass of BaseModel"""
         city = City()
-        self.assertTrue(issubclass(city, BaseModel))
+        self.assertTrue(issubclass(City, BaseModel))
 
     def test_attributes(self):
         """Tests if CIty has attributes of BaseClass"""

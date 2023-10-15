@@ -10,7 +10,7 @@ class TestUser(unittest.TestCase):
     def test_user_instance(self):
         """Test that user is isntance of BaseModel"""
         user = User()
-        self.assertIsInstance(user, BaseModel)
+        self.assertIsInstance(User, BaseModel)
 
     def test_user_attr(self):
         """Test that User class has attributes"""

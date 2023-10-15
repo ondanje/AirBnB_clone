@@ -2,8 +2,10 @@
 """Contains Test cases for the test_city file"""
 from datetime import datetime
 from models.base_model import BaseModel
-from models.amenity import Amenity
+from models import amenity
 import unittest
+
+Amenity = amenity.Amenity
 
 
 class TestCity(unittest.TestCase):
@@ -12,7 +14,7 @@ class TestCity(unittest.TestCase):
     def test_subclass(self):
         """Test for subclass of BaseModel"""
         amenity = Amenity()
-        self.assertTrue(issubclass(amenity, BaseModel))
+        self.assertIsInstance(amenity, BaseModel)
 
     def test_attributes(self):
         """Tests if Amenity has attributes of BaseClass"""

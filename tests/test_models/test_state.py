@@ -2,8 +2,10 @@
 """Contains Test cases for the test_city file"""
 from datetime import datetime
 from models.base_model import BaseModel
-from models.state import State
+from models import state
 import unittest
+
+State = state.State
 
 
 class TestCity(unittest.TestCase):
@@ -12,10 +14,10 @@ class TestCity(unittest.TestCase):
     def test_subclass(self):
         """Test for subclass of BaseModel"""
         state = State()
-        self.assertTrue(issubclass(state, BaseModel))
+        self.assertIsInstance(state, BaseModel)
 
     def test_attributes(self):
-        """Tests if CIty has attributes of BaseClass"""
+        """Tests if State has attributes of BaseClass"""
         state = State()
         self.assertTrue(hasattr(state, "id"))
         self.assertTrue(hasattr(state, "created_at"))
