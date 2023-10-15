@@ -1,13 +1,15 @@
 #!/usr/bin/python3
 from datetime import datetime
 import uuid
-from models import storage
 
 
 class BaseModel:
     """Initializes the base model"""
 
     def __init__(self, *args, **kwargs):
+
+        from models import storage
+        """lazy import"""
 
         if kwargs:
             for key, value in kwargs.items():
@@ -35,6 +37,8 @@ class BaseModel:
 
     def save(self):
         """Updates the updated_at attribute to saved time"""
+        from models import storage
+        """lazy import"""
         self.updated_at = datetime.now()
         storage.save()
 
