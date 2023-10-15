@@ -14,7 +14,7 @@ class TestCity(unittest.TestCase):
     def test_subclass(self):
         """Test for subclass of BaseModel"""
         city = City()
-        self.assertTrue(issubclass(City, BaseModel))
+        self.assertIsInstance(city, BaseModel)
 
     def test_attributes(self):
         """Tests if CIty has attributes of BaseClass"""

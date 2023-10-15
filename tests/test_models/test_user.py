@@ -1,7 +1,9 @@
 from datetime import datetime
 from models.base_model import BaseModel
-from models.user import User
+from models import user
 import unittest
+
+User = user.User
 
 
 class TestUser(unittest.TestCase):
@@ -10,7 +12,7 @@ class TestUser(unittest.TestCase):
     def test_user_instance(self):
         """Test that user is isntance of BaseModel"""
         user = User()
-        self.assertIsInstance(User, BaseModel)
+        self.assertIsInstance(user, BaseModel)
 
     def test_user_attr(self):
         """Test that User class has attributes"""
