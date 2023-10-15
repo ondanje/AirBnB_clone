@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+Console containing the entry point of command interpreter
+"""
 import cmd
 from models.base_model import BaseModel
 from models.amenity import Amenity
@@ -25,14 +28,21 @@ class HBNBCommand(cmd.Cmd):
     }
 
     def do_EOF(self, line):
-        """Exit the program (ctrl +D)"""
+        """
+        Exit the program (ctrl +D)
+        """
         return True
 
     def do_quit(self, line):
-        """Exit the program"""
+        """
+        Exit the program
+        """
         return True
 
     def emptyline(self):
+        """
+        command that does nothing when an empty line is entered
+        """
         pass
 
     def do_create(self, line):
@@ -53,7 +63,9 @@ class HBNBCommand(cmd.Cmd):
             print(new_inst.id)
 
     def do_show(self, line):
-        """command to display specific instances"""
+        """
+        command to display specific instances
+        """
         command = line.split()
 
         if not command:
@@ -69,7 +81,9 @@ class HBNBCommand(cmd.Cmd):
                 storage.save()
 
     def do_destroy(self, line):
-        """command to delete specific instances"""
+        """
+        command to delete specific instances
+        """
         command = line.split()
 
         if not command:

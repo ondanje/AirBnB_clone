@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""
+BaseModel class that defines all common
+attributes/methods for other classes:
+"""
 from datetime import datetime
 import uuid
 
@@ -32,18 +36,24 @@ class BaseModel:
         storage.new(self)
 
     def __str__(self):
-        """Returns a string representation of the object"""
+        """
+        Returns a string representation of the object
+        """
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
-        """Updates the updated_at attribute to saved time"""
+        """
+        Updates the updated_at attribute to saved time
+        """
         from models import storage
         """lazy import"""
         self.updated_at = datetime.now()
         storage.save()
 
     def to_dict(self):
-        """Returns a dictionary of all keys and values"""
+        """
+        Returns a dictionary of all keys and values
+        """
         dictionary = {}
         dictionary["__class__"] = self.__class__.__name__
         for key, value in self.__dict__.items():
