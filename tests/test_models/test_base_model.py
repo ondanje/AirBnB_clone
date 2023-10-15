@@ -1,5 +1,5 @@
 # /usr/bin/python3
-"""Contains Test cases for the test_city file"""
+"""Contains Test cases for the test_base file"""
 from datetime import datetime
 from models.base_model import BaseModel
 from models.base_model import BaseModel
