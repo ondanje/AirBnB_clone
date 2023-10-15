@@ -83,6 +83,24 @@ class HBNBCommand(cmd.Cmd):
                 del inst_storage[key_instance]
                 storage.save()
 
+    def do_all(self, line):
+        command = line.split()
+
+        class_name = command[0]
+
+        if class_name not in self.dictionary.keys():
+            print("** class doesn't exist **")
+            return
+
+        if len(command) == 1:
+            instances = storage.all()
+            class_instances = [str(instance) for instance in instances.values() if instance.__class__.__name__ == class_name]
+            print(class_instances)
+        else:
+            instance_key = "{}.{}".format(class_name, command[1])
+            instances = storage.all()
+            if instance_key in instances:
+                print(instances[instance_key])
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
