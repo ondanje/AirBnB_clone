@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import cmd
 from models.base_model import BaseModel
+from models.user import User
 from models import storage
 
 
@@ -10,6 +11,7 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
     dictionary = {
         "BaseModel": BaseModel,
+        "User": User,
     }
 
     def do_EOF(self, line):
@@ -24,6 +26,10 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, line):
+        """
+           Creates a new instance of BaseModel,
+           saves it (to the JSON file) and prints the id
+        """
         command = line.split()
         if not command:
             print(f"** class name is mising **")
