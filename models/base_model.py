@@ -52,10 +52,11 @@ class BaseModel:
         Returns a dictionary of all keys and values
         """
         dictionary = {}
-        dictionary["__class__"] = self.__class__.__name__
+
         for key, value in self.__dict__.items():
             if key == "updated_at" or key == "created_at":
                 dictionary[key] = value.isoformat()
 
             dictionary[key] = value
+        dictionary["__class__"] = self.__class__.__name__
         return dictionary
