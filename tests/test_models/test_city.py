@@ -11,10 +11,10 @@ City = city.City
 class TestCity(unittest.TestCase):
     """Test for the city class"""
 
-    def test_subclass(self):
-        """Test for subclass of BaseModel"""
+    def test_class(self):
+        """Test for instance of City"""
         city = City()
-        self.assertIsInstance(city, BaseModel)
+        self.assertIsInstance(City, BaseModel)
 
     def test_attributes(self):
         """Tests if CIty has attributes of BaseClass"""
