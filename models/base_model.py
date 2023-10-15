@@ -54,7 +54,8 @@ class BaseModel:
         dictionary = {}
         dictionary["__class__"] = self.__class__.__name__
         for key, value in self.__dict__.items():
-            if isinstance(value, datetime):
-                value = value.isoformat()
+            if key == "updated_at" or key == "created_at":
+                dictionary[key] = value.isoformat()
+
             dictionary[key] = value
         return dictionary
