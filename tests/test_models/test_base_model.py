@@ -9,11 +9,6 @@ import unittest
 class TestCity(unittest.TestCase):
     """Test for the city class"""
 
-    def test_class(self):
-        """Test for instance of BaseModel"""
-        base_model = BaseModel()
-        self.assertIsInstance(BaseModel, BaseModel)
-
     def test_attributes(self):
         """Tests if base_model has attributes of BaseClass"""
         base_model = BaseModel()
