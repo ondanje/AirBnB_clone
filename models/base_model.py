@@ -4,6 +4,7 @@ BaseModel class that defines all common
 attributes/methods for other classes:
 """
 from datetime import datetime
+import models
 import uuid
 
 
@@ -12,13 +13,10 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
 
-        from models import storage
-        """lazy import"""
-
         if kwargs:
             for key, value in kwargs.items():
                 if key == "__class__":
-                    continue  # Skip the __class__ key
+                    continue
                 if key in ("updated_at", "created_at"):
                     value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                 if key == "id":
@@ -33,7 +31,7 @@ class BaseModel:
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
         self.id = str(uuid.uuid4())
-        storage.new(self)
+        models.storage.new(self)
 
     def __str__(self):
         """
@@ -45,10 +43,8 @@ class BaseModel:
         """
         Updates the updated_at attribute to saved time
         """
-        from models import storage
-        """lazy import"""
         self.updated_at = datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """
