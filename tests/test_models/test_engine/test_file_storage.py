@@ -47,7 +47,7 @@ class TestFileStorageDocs(unittest.TestCase):
         )
 
     def test_file_storage_class_docstring(self):
-        """Test for the FileStorage class docstring"""
+        """Test for the FileStorage  docstring"""
         self.assertIsNot(FileStorage.__doc__, None, "State class requires docstring")
         self.assertTrue(len(FileStorage.__doc__) >= 1, "State class requires docstring")
 
