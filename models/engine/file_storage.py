@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+from models.user import User
 import json
 import os
 
@@ -34,3 +35,4 @@ class FileStorage:
                 data = json.load(file)
                 for values in data.values():
                     cls_name = values["__class__"]
+                    self.new(eval(cls_name)(**values))
