@@ -13,6 +13,6 @@ class User(BaseModel):
     first_name = ""
     last_name = ""
 
-    def init(self, args, **kwargs):
+    def __init__(self, args, **kwargs):
         """initializes User"""
         super().init(args, **kwargs)
