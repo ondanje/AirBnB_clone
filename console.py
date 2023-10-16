@@ -100,6 +100,8 @@ class HBNBCommand(cmd.Cmd):
             if key_instance in inst_storage:
                 del inst_storage[key_instance]
                 storage.save()
+            else:
+                print("** no instance found **")
 
     def do_all(self, line):
         """
