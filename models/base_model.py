@@ -12,7 +12,6 @@ class BaseModel:
     """Initializes the base model"""
 
     def __init__(self, *args, **kwargs):
-
         if kwargs:
             for key, value in kwargs.items():
                 if key == "__class__":
@@ -48,15 +47,9 @@ class BaseModel:
         models.storage.save()
 
     def to_dict(self):
-        """
-        Returns a dictionary of all keys and values
-        """
-        dictionary = {}
-
+        """Returns a dictionary of all keys and values"""
+        dictionary = self.__dict__.copy()
         dictionary["__class__"] = self.__class__.__name__
-        for key, value in self.__dict__.items():
-            if isinstance(value, datetime):
-                value = value.isoformat()
-
-            dictionary[key] = value
+        dictionary["created_at"] = self.created_at.isoformat()
+        dictionary["updated_at"] = self.updated_at.isoformat()
         return dictionary
