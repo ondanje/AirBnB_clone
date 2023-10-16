@@ -24,7 +24,7 @@ class HBNBCommand(cmd.Cmd):
         "City": City,
         "Place": Place,
         "Review": Review,
-        "State": State
+        "State": State,
     }
 
     def do_EOF(self, line):
@@ -47,16 +47,16 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, line):
         """
-           Creates a new instance of BaseModel,
-           saves it (to the JSON file) and prints the id
+        Creates a new instance of BaseModel,
+        saves it (to the JSON file) and prints the id
         """
         command = line.split()
         if not command:
-            print(f"** class name is mising **")
+            print(f"** class name missing **")
             return
         else:
             if command[0] not in self.dictionary.keys():
-                print(f"** class does not exist **")
+                print(f"** class doesn't exist **")
                 return
             new_inst = self.dictionary[command[0]]()
             new_inst.save()
@@ -101,8 +101,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, line):
         """
-            Prints all string representation of all
-            instances based or not on the class name.
+        Prints all string representation of all
+        instances based or not on the class name.
         """
         command = line.split()
 
@@ -118,10 +118,11 @@ class HBNBCommand(cmd.Cmd):
 
             if len(command) == 1:
                 instances = storage.all()
-                class_instances = [str(instance)
-                                   for instance in instances.values()
-                                   if instance.__class__.__name__
-                                   == class_name]
+                class_instances = [
+                    str(instance)
+                    for instance in instances.values()
+                    if instance.__class__.__name__ == class_name
+                ]
                 print(class_instances)
             else:
                 instance_key = "{}.{}".format(class_name, command[1])
@@ -131,9 +132,9 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, line):
         """
-            Updates an instance based on the class name
-            and id by adding or updating attribute
-            Usage:update <class name> <id> <attribute name> "<attribute value>"
+        Updates an instance based on the class name
+        and id by adding or updating attribute
+        Usage:update <class name> <id> <attribute name> "<attribute value>"
         """
         command = line.split()
 
