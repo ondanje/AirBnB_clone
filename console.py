@@ -166,14 +166,13 @@ class HBNBCommand(cmd.Cmd):
                 print("** value missing **")
                 return
 
-            else:
-                for k, v in instances.all().items():
-                    if k == instance_key:
-                        attr = eval(command[3])
-                        setattr(v, command[2], attr)
-                        instances.save()
-                        break
+            attr_name = command[2]
+            value = command[3]
 
+            instance = instances[instance_key]
+            if attr_name not in ["id", "created_at", "updated_at"]:
+                setattr(instance, attr_name, value)
+                instance.save()
         else:
             print("** no instance found **")
 
