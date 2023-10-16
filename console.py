@@ -73,7 +73,7 @@ class HBNBCommand(cmd.Cmd):
         elif command[0] not in self.dictionary.keys():
             print("** class doesn't exist **")
         elif len(command) == 1:
-            print("** no instance found **")
+            print("** instance id missing **")
         else:
             key_instance = "{}.{}".format(command[0], command[1])
             if key_instance in storage.all():
