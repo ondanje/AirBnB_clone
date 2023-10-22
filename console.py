@@ -80,7 +80,7 @@ class HBNBCommand(cmd.Cmd):
                 print(storage.all()[key_instance])
                 storage.save()
             else:
-                print('** no instance found **')
+                print("** no instance found **")
 
     def do_destroy(self, line):
         """
@@ -175,6 +175,17 @@ class HBNBCommand(cmd.Cmd):
                 instance.save()
         else:
             print("** no instance found **")
+
+    def do_count(self, line):
+        """
+        Retrieve instance numbers
+        """
+        count = 0
+        dictionary = storage.all()
+        for key in dictionary:
+            if line in key:
+                count += 1
+        print(f"{count}")
 
 
 if __name__ == "__main__":
