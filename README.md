@@ -2,6 +2,9 @@
 
 Welcome to the AirBnB Clone Project, the first step towards building a full web application inspired by the AirBnB platform. In this initial phase, we've created a command-line interface (CLI) that allows you to manage AirBnB objects. The CLI is designed to provide a foundation for upcoming features, including HTML/CSS templating, database storage, API integration, and front-end development.
 
+## Display Image
+![index image](PriviewImages/airbnbclone.png)
+
 ## Getting Started
 
 To get started with the AirBnB clone project, follow these instructions:
